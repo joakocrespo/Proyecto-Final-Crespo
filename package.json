@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "entrega-final-crespo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "start:dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "Joaquin Crespo",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "mongodb": "^6.6.1",
+    "mongoose": "^8.3.4",
+    "mongoose-paginate-v2": "^1.8.0"
+  }
+}
