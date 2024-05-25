@@ -9,14 +9,14 @@ class UsersDaoMongo {
         return await this.model.find()
         // return await this.model.paginate({last_name: 'Rodriguez'}, {limit: 3, page: 2})
     }
-    async getUser(uid){
-        return await this.model.findOne(uid)
+    async getUser(filter){
+        return await this.model.findOne(filter)
     }
-    async createUser(newProd){
-        return await this.model.create(newProd)
+    async createUser(newUser){
+        return await this.model.create(newUser)
     }
-    async updateUser(uid, updateProd){
-        return await this.model.updateOne({_id: uid}, updateProd)
+    async updateUser(uid, updatUser){
+        return await this.model.updateOne({ _id: uid} , updatUser)
     }
     async deleteUser(uid){
 

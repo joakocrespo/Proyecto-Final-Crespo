@@ -15,9 +15,14 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    rol: {
+    pass: {
         type: String,
         required: true
+    },
+    role: {
+        type: String,
+        enum: ['USER', 'USER_PREMIUM', 'ADMIN'],
+        default: 'USER'
     },
     atCreate: {
         type: Date,

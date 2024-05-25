@@ -1,17 +1,22 @@
 import express from 'express';
 import { engine } from "express-handlebars";
 import router from './routes/index.js';
-import connectDb from './config/config.js';
+import connectDb, { configApp } from './config/config.js';
 import __dirname from "./utils.js";
 import * as path from 'path';
-
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser'
+import initializePassport, { passportInit } from './config/passport-jwt/passport.config.js';
 
 
 const app = express()
-const PORT = 8080
+const PORT = configApp.port
 const appRouter = router
 
 connectDb()
+
+app.use(cookieParser('keylev3l'))
+app.use(bodyParser.json())
 
 app.use(appRouter)
 
@@ -24,13 +29,8 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', path.resolve(__dirname + '/views'));
 
-app.get('/', (req, res) => {
-    try {
-        res.send('Server ON')
-    } catch (error) {
-        console.log(error)
-    }
-})
+initializePassport()
+app.use(passportInit.initialize())
 
 app.listen(PORT, error =>{
     if (error) {

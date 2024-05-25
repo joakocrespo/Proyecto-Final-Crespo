@@ -38,7 +38,7 @@ UserRoutes.get('/:uid', async (req, res) => {
 
 UserRoutes.post('/', async (req, res) => {
     try {
-        const {newUser} = req.body;
+        const newUser = req.body;
         const result = await UsersService.createUser(newUser)
         res.status(200).send({
             status: 'succes',
@@ -51,8 +51,8 @@ UserRoutes.post('/', async (req, res) => {
 
 UserRoutes.put('/:uid', async (req, res) => {
     const {uid} = req.params;
-    const updateUser = req.body;
-    const result = await UsersService.updateUser({_id: uid}, newUser)
+    const updatUser = req.body;
+    const result = await UsersService.updateUser({ _id: uid} , updatUser)
     res.status(200).send({
         status: 'succes',
         payload: result
